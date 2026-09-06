@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>LowBudgetProds — Quadruple Threat</title>
-    <meta name="description" content="LowBudgetProds — Independent music from Quadruple Threat.">
+    <title>LowBudgetProds</title>
+    <meta name="description" content="LowBudgetProds — Quadruple Threat">
 
     <style>
         * {
@@ -14,22 +14,13 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --black: #080808;
-            --dark: #101010;
-            --panel: #151515;
-            --line: #292929;
-            --muted: #888;
-            --white: #f1f1f1;
-        }
-
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            background: var(--black);
-            color: var(--white);
+            background: #080808;
+            color: #e8e8e8;
             font-family: Arial, Helvetica, sans-serif;
             overflow-x: hidden;
         }
@@ -51,37 +42,34 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 70px;
-            z-index: 1000;
-
+            height: 64px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            padding: 0 5vw;
-
-            border-bottom: 1px solid rgba(255,255,255,.08);
-            background: rgba(8,8,8,.82);
-            backdrop-filter: blur(18px);
-            transition: background .25s ease;
+            padding: 0 6%;
+            background: rgba(8, 8, 8, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            z-index: 1000;
         }
 
         .logo {
             font-size: 15px;
-            font-weight: 700;
-            letter-spacing: -.4px;
+            font-weight: 800;
+            letter-spacing: -0.4px;
         }
 
         .logo span {
             color: #777;
-            font-weight: 400;
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 28px;
+            list-style: none;
             font-size: 12px;
-            color: #999;
+            color: #888;
         }
 
         .nav-links a {
@@ -89,566 +77,467 @@
         }
 
         .nav-links a:hover {
-            color: white;
-        }
-
-        .menu {
-            display: none;
-            font-size: 12px;
-            cursor: pointer;
+            color: #fff;
         }
 
         /* ---------------- HERO ---------------- */
 
         .hero {
             min-height: 100vh;
-            padding: 120px 5vw 60px;
-
-            display: grid;
-            grid-template-columns: 1.2fr .8fr;
-            gap: 70px;
-            align-items: center;
+            padding: 150px 7% 90px;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-copy {
-            max-width: 760px;
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            right: -250px;
+            top: -200px;
+            background: radial-gradient(
+                circle,
+                rgba(255,255,255,.08),
+                transparent 68%
+            );
+            pointer-events: none;
         }
 
-        .eyebrow {
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .small-label {
             color: #777;
-            font-size: 10px;
-            letter-spacing: 2px;
             text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 10px;
             margin-bottom: 22px;
         }
 
         .hero h1 {
-            font-size: clamp(60px, 9vw, 145px);
-            line-height: .82;
-            letter-spacing: -8px;
-            font-weight: 800;
+            font-size: clamp(54px, 10vw, 125px);
+            line-height: .84;
+            letter-spacing: -7px;
+            font-weight: 900;
+            max-width: 900px;
         }
 
         .hero h1 span {
-            display: block;
             color: #777;
+        }
+
+        .hero-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 42px;
+            max-width: 780px;
         }
 
         .hero-description {
-            max-width: 480px;
-            margin-top: 38px;
-            color: #999;
+            color: #888;
+            max-width: 430px;
+            line-height: 1.6;
             font-size: 14px;
-            line-height: 1.7;
         }
 
-        .hero-links {
-            display: flex;
-            gap: 10px;
-            margin-top: 28px;
+        .hero-link {
+            border-bottom: 1px solid #555;
+            padding-bottom: 5px;
+            font-size: 12px;
+            color: #ccc;
+            transition: .2s;
         }
 
-        .button {
-            border: 1px solid #363636;
-            padding: 12px 17px;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: .2s ease;
+        .hero-link:hover {
+            border-color: #fff;
+            color: #fff;
         }
 
-        .button:hover {
-            background: white;
-            color: black;
-            border-color: white;
-        }
-
-        /* HERO IMAGE */
-
-        .hero-image {
-            height: 620px;
-            position: relative;
-            overflow: hidden;
-
-            background:
-                radial-gradient(circle at 70% 25%, #454545 0, transparent 28%),
-                radial-gradient(circle at 35% 75%, #292929 0, transparent 35%),
-                linear-gradient(145deg, #171717, #050505);
-        }
-
-        .hero-image::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-
-            background:
-                repeating-linear-gradient(
-                    0deg,
-                    transparent 0px,
-                    transparent 3px,
-                    rgba(255,255,255,.025) 4px
-                );
-        }
-
-        .hero-image::after {
-            content: "PHOTO / PLACEHOLDER";
-            position: absolute;
-            bottom: 18px;
-            left: 18px;
-            color: #777;
-            font-size: 9px;
-            letter-spacing: 2px;
-        }
-
-        .image-number {
-            position: absolute;
-            right: 18px;
-            top: 18px;
-            font-size: 9px;
-            color: #777;
-        }
-
-        /* ---------------- GENERAL ---------------- */
+        /* ---------------- SECTIONS ---------------- */
 
         section {
-            padding: 130px 5vw;
-            border-top: 1px solid #1d1d1d;
+            padding: 110px 7%;
+            border-top: 1px solid rgba(255,255,255,.06);
         }
 
         .section-head {
             display: flex;
-            justify-content: space-between;
             align-items: baseline;
+            justify-content: space-between;
             margin-bottom: 55px;
         }
 
-        .section-title {
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #aaa;
-        }
-
         .section-number {
+            font-size: 11px;
             color: #555;
-            font-size: 10px;
+            letter-spacing: 2px;
         }
 
-        /* ---------------- QUAD THREAT ---------------- */
-
-        .quad-intro {
-            display: grid;
-            grid-template-columns: .8fr 1.2fr;
-            gap: 80px;
-            margin-bottom: 75px;
+        .section-title {
+            font-size: 30px;
+            letter-spacing: -1.5px;
+            font-weight: 700;
         }
 
-        .quad-intro h2 {
-            font-size: clamp(40px, 6vw, 90px);
-            line-height: .9;
-            letter-spacing: -5px;
-        }
-
-        .quad-intro p {
-            max-width: 550px;
-            color: #888;
-            line-height: 1.8;
-            font-size: 14px;
-            padding-top: 8px;
-        }
-
-        .roster {
-            border-top: 1px solid #292929;
-        }
-
-        .artist-row {
-            display: grid;
-            grid-template-columns: 60px 1fr 160px 40px;
-            align-items: center;
-
-            min-height: 90px;
-            border-bottom: 1px solid #292929;
-
-            transition: background .2s ease;
-        }
-
-        .artist-row:hover {
-            background: #101010;
-        }
-
-        .artist-num {
+        .section-note {
             color: #555;
             font-size: 11px;
-        }
-
-        .artist-name {
-            font-size: 25px;
-            letter-spacing: -1px;
-        }
-
-        .artist-role {
-            color: #666;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .artist-arrow {
-            color: #555;
-            transition: transform .2s ease;
-        }
-
-        .artist-row:hover .artist-arrow {
-            transform: translateX(5px);
-            color: white;
-        }
-
-        /* ---------------- MUSIC ---------------- */
-
-        .music-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        .music-copy h2 {
-            font-size: clamp(45px, 6vw, 85px);
-            line-height: .9;
-            letter-spacing: -5px;
-        }
-
-        .music-copy p {
-            color: #777;
-            max-width: 400px;
-            line-height: 1.7;
-            font-size: 13px;
-            margin-top: 25px;
-        }
-
-        .spotify-wrap {
-            background: #111;
-            padding: 8px;
-            border: 1px solid #242424;
-        }
-
-        .spotify-wrap iframe {
-            display: block;
-            width: 100%;
-            height: 380px;
-            border: none;
-        }
-
-        /* ---------------- ARTISTS ---------------- */
-
-        .artist-grid {
-            display: grid;
-            grid-template-columns: 1.25fr .75fr;
-            gap: 18px;
-        }
-
-        .artist-card {
-            position: relative;
-            min-height: 520px;
-            overflow: hidden;
-            background: #111;
-        }
-
-        .artist-card.small {
-            min-height: 250px;
-        }
-
-        .artist-card.large {
-            grid-row: span 2;
-        }
-
-        .artist-photo {
-            position: absolute;
-            inset: 0;
-
-            background:
-                radial-gradient(circle at 50% 35%, #444, transparent 24%),
-                radial-gradient(circle at 70% 80%, #222, transparent 35%),
-                linear-gradient(145deg, #1c1c1c, #060606);
-
-            transition: transform .6s cubic-bezier(.2,.8,.2,1);
-        }
-
-        .artist-card:hover .artist-photo {
-            transform: scale(1.04);
-        }
-
-        .artist-photo::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                repeating-linear-gradient(
-                    90deg,
-                    transparent 0,
-                    transparent 2px,
-                    rgba(255,255,255,.018) 3px
-                );
-        }
-
-        .artist-info {
-            position: absolute;
-            left: 22px;
-            right: 22px;
-            bottom: 20px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-        }
-
-        .artist-info h3 {
-            font-size: 28px;
-            letter-spacing: -1px;
-        }
-
-        .artist-info small {
-            display: block;
-            color: #777;
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-        }
-
-        .artist-info span {
-            color: #777;
-            font-size: 10px;
-        }
-
-        /* ---------------- RELEASES ---------------- */
-
-        .release-list {
-            display: flex;
-            flex-direction: column;
-            gap: 35px;
-        }
-
-        .release-item {
-            display: grid;
-            grid-template-columns: 70px 1fr;
-            gap: 25px;
-            align-items: start;
-        }
-
-        .release-number {
-            color: #555;
-            font-size: 11px;
-            padding-top: 18px;
-            letter-spacing: 1px;
-        }
-
-        .release-player {
-            width: 100%;
-            max-width: 850px;
-            background: #111;
-            border: 1px solid #222;
-            overflow: hidden;
-            border-radius: 12px;
-        }
-
-        .release-player iframe {
-            display: block;
-            width: 100%;
-            height: 352px;
-            border: 0;
         }
 
         /* ---------------- ABOUT ---------------- */
 
-        .about {
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 90px;
+        }
+
+        .about-main {
+            font-size: clamp(25px, 3vw, 43px);
+            line-height: 1.08;
+            letter-spacing: -1.8px;
+            color: #ddd;
+        }
+
+        .about-main span {
+            color: #555;
+        }
+
+        .about-side {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.8;
+            max-width: 370px;
+        }
+
+        /* ---------------- MUSIC ---------------- */
+
+        .music-wrap {
+            max-width: 900px;
+        }
+
+        .spotify-box {
+            background: #101010;
+            border: 1px solid rgba(255,255,255,.07);
+            padding: 8px;
+        }
+
+        .spotify-box iframe {
+            width: 100%;
+            border: 0;
+            display: block;
+            border-radius: 5px;
+        }
+
+        /* ---------------- ROSTER ---------------- */
+
+        .roster {
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        .artist-row {
+            display: grid;
+            grid-template-columns: 70px 1fr auto;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            transition: padding .2s ease, background .2s ease;
+        }
+
+        .artist-row:hover {
+            padding-left: 12px;
+            padding-right: 12px;
+            background: rgba(255,255,255,.025);
+        }
+
+        .artist-number {
+            color: #444;
+            font-size: 11px;
+        }
+
+        .artist-name {
+            font-size: clamp(21px, 3vw, 34px);
+            letter-spacing: -1.2px;
+            font-weight: 700;
+        }
+
+        .artist-name span {
+            color: #555;
+            font-weight: 400;
+        }
+
+        .artist-tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #555;
+        }
+
+        /* ---------------- RELEASES ---------------- */
+
+        .releases {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .release {
+            display: grid;
+            grid-template-columns: 55px 1fr;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+        }
+
+        .release-number {
+            color: #444;
+            font-size: 12px;
+            padding-top: 4px;
+        }
+
+        .release-info {
+            margin-bottom: 15px;
+        }
+
+        .release-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .release-sub {
+            color: #666;
+            font-size: 11px;
+        }
+
+        .release iframe {
+            width: 100%;
+            height: 152px;
+            border: 0;
+            border-radius: 6px;
+        }
+
+        /* ---------------- QUADRUPLE THREAT ---------------- */
+
+        .qt {
+            position: relative;
+        }
+
+        .qt-title {
+            font-size: clamp(55px, 9vw, 120px);
+            line-height: .85;
+            letter-spacing: -6px;
+            font-weight: 900;
+            max-width: 900px;
+            margin-bottom: 55px;
+        }
+
+        .qt-title span {
+            color: #444;
+        }
+
+        .qt-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 60px;
         }
 
-        .about h2 {
-            font-size: clamp(45px, 6vw, 90px);
-            line-height: .9;
-            letter-spacing: -5px;
-        }
-
-        .about-copy {
-            color: #888;
+        .qt-info p {
+            color: #777;
+            font-size: 13px;
             line-height: 1.8;
-            font-size: 14px;
+            max-width: 430px;
         }
 
-        .about-copy p + p {
-            margin-top: 22px;
+        .qt-list {
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        .qt-list div {
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+
+        .qt-list span {
+            color: #555;
         }
 
         /* ---------------- CONTACT ---------------- */
 
         .contact {
+            min-height: 65vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-title {
+            font-size: clamp(45px, 8vw, 105px);
+            line-height: .88;
+            letter-spacing: -5px;
+            font-weight: 900;
+            max-width: 850px;
+        }
+
+        .contact-title span {
+            color: #555;
+        }
+
+        .contact-bottom {
             display: flex;
             justify-content: space-between;
-            align-items: end;
-            gap: 50px;
-        }
-
-        .contact h2 {
-            font-size: clamp(50px, 8vw, 120px);
-            letter-spacing: -7px;
-            line-height: .8;
-        }
-
-        .contact-right {
-            max-width: 300px;
-        }
-
-        .contact-right p {
-            color: #777;
-            line-height: 1.7;
-            font-size: 13px;
-            margin-bottom: 18px;
+            align-items: flex-end;
+            gap: 30px;
+            margin-top: 80px;
         }
 
         .email {
-            font-size: 13px;
+            font-size: 15px;
+            color: #ccc;
             border-bottom: 1px solid #555;
             padding-bottom: 7px;
-            display: inline-block;
+        }
+
+        .email:hover {
+            border-color: #fff;
+        }
+
+        .contact-note {
+            color: #555;
+            font-size: 11px;
+            line-height: 1.6;
+            max-width: 260px;
         }
 
         /* ---------------- FOOTER ---------------- */
 
         footer {
-            border-top: 1px solid #202020;
-            padding: 25px 5vw;
-
+            border-top: 1px solid rgba(255,255,255,.06);
+            padding: 25px 7%;
             display: flex;
             justify-content: space-between;
-
-            color: #555;
-            font-size: 9px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            color: #444;
+            font-size: 10px;
+            letter-spacing: .5px;
         }
 
         /* ---------------- ANIMATION ---------------- */
 
-        .reveal {
+        .fade {
             opacity: 0;
-            transform: translateY(25px);
-            transition: opacity .8s ease, transform .8s ease;
+            transform: translateY(18px);
+            transition: opacity .7s ease, transform .7s ease;
         }
 
-        .reveal.visible {
+        .fade.show {
             opacity: 1;
             transform: translateY(0);
         }
 
         /* ---------------- MOBILE ---------------- */
 
-        @media (max-width: 800px) {
+        @media (max-width: 700px) {
 
             nav {
-                height: 60px;
+                padding: 0 5%;
             }
 
             .nav-links {
-                display: none;
+                gap: 14px;
+                font-size: 10px;
             }
 
-            .menu {
-                display: block;
+            .nav-links li:nth-child(3),
+            .nav-links li:nth-child(4) {
+                display: none;
             }
 
             .hero {
-                grid-template-columns: 1fr;
-                padding-top: 120px;
-                gap: 50px;
+                padding: 130px 6% 70px;
+                min-height: 90vh;
             }
 
             .hero h1 {
-                font-size: 20vw;
-                letter-spacing: -5px;
+                font-size: 58px;
+                letter-spacing: -4px;
             }
 
-            .hero-image {
-                height: 430px;
+            .hero-bottom {
+                display: block;
+            }
+
+            .hero-description {
+                margin-bottom: 25px;
             }
 
             section {
-                padding: 90px 6vw;
+                padding: 80px 6%;
             }
 
-            .quad-intro {
-                grid-template-columns: 1fr;
-                gap: 30px;
+            .section-head {
+                margin-bottom: 35px;
             }
 
-            .quad-intro h2 {
-                font-size: 17vw;
+            .section-title {
+                font-size: 25px;
             }
 
-            .artist-row {
-                grid-template-columns: 35px 1fr 30px;
-            }
-
-            .artist-role {
+            .section-note {
                 display: none;
             }
 
-            .artist-name {
-                font-size: 18px;
-            }
-
-            .music-layout {
+            .about-grid,
+            .qt-info {
                 grid-template-columns: 1fr;
+                gap: 35px;
             }
 
-            .spotify-wrap iframe {
-                height: 400px;
+            .about-main {
+                font-size: 28px;
             }
 
-            .artist-grid {
-                grid-template-columns: 1fr;
+            .artist-row {
+                grid-template-columns: 35px 1fr;
             }
 
-            .artist-card,
-            .artist-card.small,
-            .artist-card.large {
-                min-height: 420px;
-                grid-row: auto;
+            .artist-tag {
+                display: none;
             }
 
-            .release-item {
+            .qt-title {
+                font-size: 58px;
+                letter-spacing: -4px;
+            }
+
+            .release {
                 grid-template-columns: 35px 1fr;
                 gap: 10px;
             }
 
-            .release-player iframe {
-                height: 352px;
+            .release iframe {
+                height: 152px;
             }
 
-            .about {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .contact-bottom {
+                display: block;
             }
 
-            .about h2 {
-                font-size: 17vw;
-            }
-
-            .contact {
-                flex-direction: column;
-                align-items: start;
-            }
-
-            .contact h2 {
-                font-size: 17vw;
+            .contact-note {
+                margin-top: 25px;
             }
 
             footer {
-                flex-direction: column;
-                gap: 10px;
+                padding: 22px 6%;
             }
         }
     </style>
@@ -657,569 +546,381 @@
 <body>
 
     <!-- NAV -->
-    <nav>
 
-        <a href="#" class="logo">
+    <nav>
+        <a href="#top" class="logo">
             LowBudget<span>Prods</span>
         </a>
 
-        <div class="nav-links">
-            <a href="#music">Music</a>
-            <a href="#artists">Artists</a>
-            <a href="#quad">Quadruple Threat</a>
-            <a href="#releases">Releases</a>
-            <a href="#contact">Contact</a>
-        </div>
-
-        <div class="menu">
-            MENU
-        </div>
-
+        <ul class="nav-links">
+            <li><a href="#music">music</a></li>
+            <li><a href="#artists">artists</a></li>
+            <li><a href="#quadruple-threat">quad threat</a></li>
+            <li><a href="#releases">releases</a></li>
+            <li><a href="#contact">contact</a></li>
+        </ul>
     </nav>
 
 
     <!-- HERO -->
-    <header class="hero">
 
-        <div class="hero-copy reveal">
+    <main id="top">
 
-            <div class="eyebrow">
-                LowBudgetProds / Independent Music
-            </div>
+        <section class="hero">
 
-            <h1>
-                LOW
-                <span>BUDGET</span>
-                PRODS.
-            </h1>
+            <div class="hero-content fade">
 
-            <p class="hero-description">
-                Independent music from a group of artists making their own lane.
-                LowBudgetProds is home to Quadruple Threat and its artists.
-            </p>
-
-            <div class="hero-links">
-                <a href="#music" class="button">Listen</a>
-                <a href="#artists" class="button">Artists</a>
-            </div>
-
-        </div>
-
-        <div class="hero-image reveal">
-
-            <span class="image-number">
-                001 / 026
-            </span>
-
-        </div>
-
-    </header>
-
-
-    <!-- QUADRUPLE THREAT -->
-    <section id="quad">
-
-        <div class="section-head reveal">
-
-            <div class="section-title">
-                Quadruple Threat
-            </div>
-
-            <div class="section-number">
-                01
-            </div>
-
-        </div>
-
-
-        <div class="quad-intro reveal">
-
-            <h2>
-                FOUR<br>
-                ARTISTS.<br>
-                ONE UNIT.
-            </h2>
-
-            <p>
-                Quadruple Threat is the collective behind LowBudgetProds.
-                Four different artists, different sounds, and different
-                personalities working under the same name.
-                <br><br>
-                This is where the music lives.
-            </p>
-
-        </div>
-
-
-        <div class="roster">
-
-            <a href="#artists" class="artist-row reveal">
-
-                <div class="artist-num">
-                    01
+                <div class="small-label">
+                    LowBudgetProds / Quadruple Threat
                 </div>
 
-                <div class="artist-name">
-                    Luh Coop / Hollow
+                <h1>
+                    LOWBUDGET<br>
+                    <span>PRODS.</span>
+                </h1>
+
+                <div class="hero-bottom">
+
+                    <p class="hero-description">
+                        just a group making music.
+                        no big label shit. no fake industry stuff.
+                        just us putting stuff out.
+                    </p>
+
+                    <a href="#music" class="hero-link">
+                        listen ↓
+                    </a>
+
                 </div>
-
-                <div class="artist-role">
-                    Artist
-                </div>
-
-                <div class="artist-arrow">
-                    →
-                </div>
-
-            </a>
-
-
-            <a href="#artists" class="artist-row reveal">
-
-                <div class="artist-num">
-                    02
-                </div>
-
-                <div class="artist-name">
-                    RKelly
-                </div>
-
-                <div class="artist-role">
-                    Artist
-                </div>
-
-                <div class="artist-arrow">
-                    →
-                </div>
-
-            </a>
-
-
-            <a href="#artists" class="artist-row reveal">
-
-                <div class="artist-num">
-                    03
-                </div>
-
-                <div class="artist-name">
-                    MR Sandal
-                </div>
-
-                <div class="artist-role">
-                    Artist
-                </div>
-
-                <div class="artist-arrow">
-                    →
-                </div>
-
-            </a>
-
-
-            <a href="#artists" class="artist-row reveal">
-
-                <div class="artist-num">
-                    04
-                </div>
-
-                <div class="artist-name">
-                    Lil Jim Bob
-                </div>
-
-                <div class="artist-role">
-                    Artist
-                </div>
-
-                <div class="artist-arrow">
-                    →
-                </div>
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- MUSIC -->
-    <section id="music">
-
-        <div class="section-head reveal">
-
-            <div class="section-title">
-                Music
-            </div>
-
-            <div class="section-number">
-                02
-            </div>
-
-        </div>
-
-
-        <div class="music-layout">
-
-            <div class="music-copy reveal">
-
-                <h2>
-                    HEAR<br>
-                    WHAT'S<br>
-                    NEXT.
-                </h2>
-
-                <p>
-                    The current QuadThreat playlist. Updated with music
-                    from the collective.
-                </p>
 
             </div>
 
+        </section>
 
-            <div class="spotify-wrap reveal">
 
-                <iframe
-                    src="https://open.spotify.com/embed/playlist/08QVasVOmMJH9atiisOQQu?utm_source=generator"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy">
-                </iframe>
+        <!-- ABOUT -->
+
+        <section id="about">
+
+            <div class="section-head fade">
+                <div class="section-title">what we're on</div>
+                <div class="section-note">01 / 05</div>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-main fade">
+                    LowBudgetProds is a small music label / group
+                    built around <span>Quadruple Threat.</span>
+                </div>
+
+                <div class="about-side fade">
+                    We make stuff, record stuff, drop stuff and
+                    figure the rest out as we go.
+
+                    <br><br>
+
+                    No huge team behind it. Just artists,
+                    beats and whatever we're working on next.
+                </div>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- ARTISTS -->
-    <section id="artists">
+        <!-- MUSIC -->
 
-        <div class="section-head reveal">
+        <section id="music">
 
-            <div class="section-title">
-                Artists
+            <div class="section-head fade">
+                <div class="section-title">music</div>
+                <div class="section-note">02 / 05</div>
             </div>
 
-            <div class="section-number">
-                03
-            </div>
+            <div class="music-wrap fade">
 
-        </div>
-
-
-        <div class="artist-grid">
-
-            <article class="artist-card large reveal">
-
-                <div class="artist-photo"></div>
-
-                <div class="artist-info">
-
-                    <div>
-
-                        <small>
-                            01 / Quadruple Threat
-                        </small>
-
-                        <h3>
-                            Luh Coop / Hollow
-                        </h3>
-
-                    </div>
-
-                    <span>
-                        Artist
-                    </span>
-
-                </div>
-
-            </article>
-
-
-            <article class="artist-card small reveal">
-
-                <div class="artist-photo"></div>
-
-                <div class="artist-info">
-
-                    <div>
-
-                        <small>
-                            02
-                        </small>
-
-                        <h3>
-                            RKelly
-                        </h3>
-
-                    </div>
-
-                    <span>
-                        Artist
-                    </span>
-
-                </div>
-
-            </article>
-
-
-            <article class="artist-card small reveal">
-
-                <div class="artist-photo"></div>
-
-                <div class="artist-info">
-
-                    <div>
-
-                        <small>
-                            03
-                        </small>
-
-                        <h3>
-                            MR Sandal
-                        </h3>
-
-                    </div>
-
-                    <span>
-                        Artist
-                    </span>
-
-                </div>
-
-            </article>
-
-        </div>
-
-
-        <div style="margin-top:18px;">
-
-            <article class="artist-card small reveal">
-
-                <div class="artist-photo"></div>
-
-                <div class="artist-info">
-
-                    <div>
-
-                        <small>
-                            04
-                        </small>
-
-                        <h3>
-                            Lil Jim Bob
-                        </h3>
-
-                    </div>
-
-                    <span>
-                        Artist
-                    </span>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- RELEASES -->
-    <section id="releases">
-
-        <div class="section-head reveal">
-
-            <div class="section-title">
-                Releases
-            </div>
-
-            <div class="section-number">
-                04
-            </div>
-
-        </div>
-
-
-        <div class="release-list">
-
-
-            <!-- RELEASE 1 -->
-
-            <article class="release-item reveal">
-
-                <div class="release-number">
-                    01
-                </div>
-
-                <div class="release-player">
+                <div class="spotify-box">
 
                     <iframe
-                        src="https://open.spotify.com/embed/track/1NQqxDZWFg0a02hNNzeFTG?utm_source=generator&si=0c8769cb803a40b7"
-                        width="100%"
+                        src="https://open.spotify.com/embed/playlist/08QVasVOmMJH9atiisOQQu?utm_source=generator"
                         height="352"
-                        frameborder="0"
-                        allowfullscreen=""
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy">
                     </iframe>
 
                 </div>
 
-            </article>
-
-
-            <!-- RELEASE 2 -->
-
-            <article class="release-item reveal">
-
-                <div class="release-number">
-                    02
-                </div>
-
-                <div class="release-player">
-
-                    <iframe
-                        src="https://open.spotify.com/embed/track/5YtFkjnWzpRzqZDe3ECXVN?utm_source=generator&si=0d6c59a6bea4487e"
-                        width="100%"
-                        height="352"
-                        frameborder="0"
-                        allowfullscreen=""
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy">
-                    </iframe>
-
-                </div>
-
-            </article>
-
-
-            <!-- RELEASE 3 -->
-
-            <article class="release-item reveal">
-
-                <div class="release-number">
-                    03
-                </div>
-
-                <div class="release-player">
-
-                    <iframe
-                        src="https://open.spotify.com/embed/track/5cedmuAQ91Q1yDnohQtYqs?utm_source=generator&si=e63f4cd983c0467e"
-                        width="100%"
-                        height="352"
-                        frameborder="0"
-                        allowfullscreen=""
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy">
-                    </iframe>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-    <section>
-
-        <div class="section-head reveal">
-
-            <div class="section-title">
-                About
             </div>
 
-            <div class="section-number">
-                05
+        </section>
+
+
+        <!-- ARTISTS -->
+
+        <section id="artists">
+
+            <div class="section-head fade">
+                <div class="section-title">artists</div>
+                <div class="section-note">03 / 05</div>
             </div>
 
-        </div>
+            <div class="roster">
 
+                <a href="#quadruple-threat" class="artist-row fade">
+                    <div class="artist-number">01</div>
 
-        <div class="about">
+                    <div class="artist-name">
+                        Luh Coop <span>/ Hollow</span>
+                    </div>
 
-            <h2 class="reveal">
-                MADE<br>
-                INDEPENDENTLY.
-            </h2>
+                    <div class="artist-tag">
+                        Quad Threat
+                    </div>
+                </a>
 
+                <a href="#quadruple-threat" class="artist-row fade">
+                    <div class="artist-number">02</div>
 
-            <div class="about-copy reveal">
+                    <div class="artist-name">
+                        RKelly
+                    </div>
 
-                <p>
-                    LowBudgetProds is an independent label built around
-                    the artists and music that make up Quadruple Threat.
-                </p>
+                    <div class="artist-tag">
+                        Quad Threat
+                    </div>
+                </a>
 
-                <p>
-                    No giant roster. No complicated setup. Just artists,
-                    music, and a place to put it all.
-                </p>
+                <a href="#quadruple-threat" class="artist-row fade">
+                    <div class="artist-number">03</div>
 
-                <p>
-                    The site is intentionally simple. The music should
-                    always be the main thing.
-                </p>
+                    <div class="artist-name">
+                        MR Sandal
+                    </div>
 
-            </div>
+                    <div class="artist-tag">
+                        Quad Threat
+                    </div>
+                </a>
 
-        </div>
+                <a href="#quadruple-threat" class="artist-row fade">
+                    <div class="artist-number">04</div>
 
-    </section>
+                    <div class="artist-name">
+                        Lil Jim Bob
+                    </div>
 
-
-    <!-- CONTACT -->
-    <section id="contact">
-
-        <div class="section-head reveal">
-
-            <div class="section-title">
-                Contact
-            </div>
-
-            <div class="section-number">
-                06
-            </div>
-
-        </div>
-
-
-        <div class="contact">
-
-            <h2 class="reveal">
-                GET<br>
-                IN<br>
-                TOUCH.
-            </h2>
-
-
-            <div class="contact-right reveal">
-
-                <p>
-                    For music, collaborations, bookings, or anything
-                    related to LowBudgetProds.
-                </p>
-
-                <a
-                    class="email"
-                    href="mailto:contact@lowbudgetprods.com">
-                    contact@lowbudgetprods.com
+                    <div class="artist-tag">
+                        Quad Threat
+                    </div>
                 </a>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+
+        <!-- QUADRUPLE THREAT -->
+
+        <section id="quadruple-threat" class="qt">
+
+            <div class="section-head fade">
+                <div class="section-title">the group</div>
+                <div class="section-note">04 / 05</div>
+            </div>
+
+            <div class="qt-title fade">
+                QUADRUPLE<br>
+                <span>THREAT.</span>
+            </div>
+
+            <div class="qt-info">
+
+                <p class="fade">
+                    Four people. Different sounds.
+                    Same group.
+
+                    <br><br>
+
+                    Quadruple Threat is the crew behind
+                    a lot of what comes out through
+                    LowBudgetProds.
+                </p>
+
+                <div class="qt-list fade">
+
+                    <div>
+                        <span>01</span>
+                        Luh Coop / Hollow
+                    </div>
+
+                    <div>
+                        <span>02</span>
+                        RKelly
+                    </div>
+
+                    <div>
+                        <span>03</span>
+                        MR Sandal
+                    </div>
+
+                    <div>
+                        <span>04</span>
+                        Lil Jim Bob
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RELEASES -->
+
+        <section id="releases">
+
+            <div class="section-head fade">
+                <div class="section-title">releases</div>
+                <div class="section-note">05 / 05</div>
+            </div>
+
+            <div class="releases">
+
+                <div class="release fade">
+
+                    <div class="release-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <div class="release-info">
+                            <div class="release-title">
+                                release one
+                            </div>
+
+                            <div class="release-sub">
+                                LowBudgetProds
+                            </div>
+                        </div>
+
+                        <iframe
+                            src="https://open.spotify.com/embed/track/1NQqxDZWFg0a02hNNzeFTG?utm_source=generator"
+                            height="152"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy">
+                        </iframe>
+
+                    </div>
+
+                </div>
+
+
+                <div class="release fade">
+
+                    <div class="release-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <div class="release-info">
+                            <div class="release-title">
+                                release two
+                            </div>
+
+                            <div class="release-sub">
+                                LowBudgetProds
+                            </div>
+                        </div>
+
+                        <iframe
+                            src="https://open.spotify.com/embed/track/5YtFkjnWzpRzqZDe3ECXVN?utm_source=generator"
+                            height="152"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy">
+                        </iframe>
+
+                    </div>
+
+                </div>
+
+
+                <div class="release fade">
+
+                    <div class="release-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <div class="release-info">
+                            <div class="release-title">
+                                release three
+                            </div>
+
+                            <div class="release-sub">
+                                LowBudgetProds
+                            </div>
+                        </div>
+
+                        <iframe
+                            src="https://open.spotify.com/embed/track/5cedmuAQ91Q1yDnohQtYqs?utm_source=generator"
+                            height="152"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy">
+                        </iframe>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section id="contact" class="contact">
+
+            <div class="fade">
+
+                <div class="small-label">
+                    contact
+                </div>
+
+                <div class="contact-title">
+                    GOT SOMETHING<br>
+                    <span>TO SAY?</span>
+                </div>
+
+            </div>
+
+            <div class="contact-bottom fade">
+
+                <a
+                    class="email"
+                    href="mailto:cooperbednarz757@gmail.com">
+                    cooperbednarz757@gmail.com
+                </a>
+
+                <div class="contact-note">
+                    demos, collabs, questions, whatever.
+                    send it over.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
 
 
     <!-- FOOTER -->
 
     <footer>
-
         <div>
             © 2026 LowBudgetProds
         </div>
@@ -1227,74 +928,30 @@
         <div>
             Quadruple Threat
         </div>
-
-        <div>
-            Independent / 2026
-        </div>
-
     </footer>
 
 
+    <!-- SIMPLE SCROLL ANIMATION -->
+
     <script>
+        const fadeElements = document.querySelectorAll(".fade");
 
-        /* Scroll reveal */
-
-        const revealElements =
-            document.querySelectorAll(".reveal");
-
-        const revealObserver =
-            new IntersectionObserver(
-                (entries) => {
-
-                    entries.forEach((entry) => {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.classList.add("visible");
-
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.12
-                }
-            );
-
-
-        revealElements.forEach((element) => {
-
-            revealObserver.observe(element);
-
-        });
-
-
-        /* Navbar background */
-
-        const nav =
-            document.querySelector("nav");
-
-        window.addEventListener("scroll", () => {
-
-            if (window.scrollY > 30) {
-
-                nav.style.background =
-                    "rgba(8,8,8,.94)";
-
-            } else {
-
-                nav.style.background =
-                    "rgba(8,8,8,.82)";
-
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+                });
+            },
+            {
+                threshold: 0.12
             }
+        );
 
+        fadeElements.forEach(element => {
+            observer.observe(element);
         });
-
     </script>
 
 </body>
