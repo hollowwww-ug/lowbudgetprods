@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +20,10 @@
         }
 
         body {
-            background: #080808;
-            color: #e8e8e8;
+            background: #0a0a0a;
+            color: #f1f1f1;
             font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
@@ -30,231 +32,304 @@
             text-decoration: none;
         }
 
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
         ::selection {
             background: #fff;
             color: #000;
         }
 
-        /* ---------------- NAV ---------------- */
+        /* =========================
+           NAV
+        ========================= */
 
-        nav {
+        header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 64px;
+            height: 68px;
+            z-index: 1000;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 6%;
-            background: rgba(8, 8, 8, 0.82);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            z-index: 1000;
+
+            padding: 0 5vw;
+
+            background: rgba(10, 10, 10, 0.88);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #191919;
         }
 
         .logo {
             font-size: 15px;
-            font-weight: 800;
+            font-weight: 700;
             letter-spacing: -0.4px;
         }
 
         .logo span {
-            color: #777;
+            color: #666;
         }
 
-        .nav-links {
+        nav {
             display: flex;
-            gap: 28px;
-            list-style: none;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #777;
             font-size: 12px;
-            color: #888;
+            transition: color 0.2s ease;
         }
 
-        .nav-links a {
-            transition: color .2s ease;
-        }
-
-        .nav-links a:hover {
+        nav a:hover {
             color: #fff;
         }
 
-        /* ---------------- HERO ---------------- */
+        /* =========================
+           GENERAL
+        ========================= */
 
-        .hero {
-            min-height: 100vh;
-            padding: 150px 7% 90px;
-            display: flex;
-            align-items: flex-end;
-            position: relative;
-            overflow: hidden;
+        .container {
+            width: min(1180px, 90%);
+            margin: auto;
         }
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 700px;
-            height: 700px;
-            right: -250px;
-            top: -200px;
-            background: radial-gradient(
-                circle,
-                rgba(255,255,255,.08),
-                transparent 68%
-            );
-            pointer-events: none;
+        section {
+            padding: 120px 0;
+            border-bottom: 1px solid #181818;
         }
 
-        .hero-content {
-            max-width: 900px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .small-label {
-            color: #777;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+        .eyebrow {
+            color: #666;
             font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
             margin-bottom: 22px;
         }
 
-        .hero h1 {
-            font-size: clamp(54px, 10vw, 125px);
-            line-height: .84;
-            letter-spacing: -7px;
-            font-weight: 900;
-            max-width: 900px;
+        .section-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 45px;
         }
 
-        .hero h1 span {
-            color: #777;
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .section-count {
+            color: #444;
+            font-size: 11px;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 35px;
+
+            min-width: 170px;
+            padding: 13px 14px 13px 17px;
+
+            background: #f1f1f1;
+            color: #0a0a0a;
+
+            border: 1px solid #f1f1f1;
+            border-radius: 4px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .button:hover {
+            background: transparent;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .button-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 22px;
+            height: 22px;
+
+            background: #0a0a0a;
+            color: #fff;
+
+            border-radius: 3px;
+
+            transition: transform 0.2s ease;
+        }
+
+        .button:hover .button-arrow {
+            transform: translateX(3px);
+        }
+
+        .button.dark {
+            background: transparent;
+            color: #ddd;
+            border-color: #333;
+        }
+
+        .button.dark .button-arrow {
+            background: #f1f1f1;
+            color: #000;
+        }
+
+        .button.dark:hover {
+            background: #f1f1f1;
+            color: #000;
+            border-color: #f1f1f1;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding-top: 100px;
+        }
+
+        .hero-inner {
+            width: min(1180px, 90%);
+            margin: auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(58px, 10vw, 128px);
+            line-height: 0.88;
+            letter-spacing: -7px;
+            font-weight: 800;
+            max-width: 1000px;
+        }
+
+        .hero h1 .muted {
+            color: #444;
         }
 
         .hero-bottom {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            margin-top: 42px;
-            max-width: 780px;
+
+            gap: 50px;
+            margin-top: 55px;
+
+            max-width: 850px;
         }
 
-        .hero-description {
-            color: #888;
+        .hero-text {
             max-width: 430px;
-            line-height: 1.6;
+
+            color: #777;
             font-size: 14px;
+            line-height: 1.7;
         }
 
-        .hero-link {
-            border-bottom: 1px solid #555;
-            padding-bottom: 5px;
-            font-size: 12px;
-            color: #ccc;
-            transition: .2s;
-        }
-
-        .hero-link:hover {
-            border-color: #fff;
-            color: #fff;
-        }
-
-        /* ---------------- SECTIONS ---------------- */
-
-        section {
-            padding: 110px 7%;
-            border-top: 1px solid rgba(255,255,255,.06);
-        }
-
-        .section-head {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 55px;
-        }
-
-        .section-number {
-            font-size: 11px;
-            color: #555;
-            letter-spacing: 2px;
-        }
-
-        .section-title {
-            font-size: 30px;
-            letter-spacing: -1.5px;
-            font-weight: 700;
-        }
-
-        .section-note {
-            color: #555;
-            font-size: 11px;
-        }
-
-        /* ---------------- ABOUT ---------------- */
+        /* =========================
+           ABOUT
+        ========================= */
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1.2fr .8fr;
-            gap: 90px;
+            grid-template-columns: 1.4fr 0.6fr;
+            gap: 100px;
         }
 
-        .about-main {
-            font-size: clamp(25px, 3vw, 43px);
-            line-height: 1.08;
-            letter-spacing: -1.8px;
-            color: #ddd;
+        .about-large {
+            font-size: clamp(25px, 3.3vw, 42px);
+            line-height: 1.12;
+            letter-spacing: -1.7px;
+            max-width: 750px;
         }
 
-        .about-main span {
+        .about-large span {
             color: #555;
         }
 
-        .about-side {
-            color: #777;
+        .about-small {
+            color: #707070;
             font-size: 13px;
             line-height: 1.8;
-            max-width: 370px;
+            max-width: 300px;
         }
 
-        /* ---------------- MUSIC ---------------- */
+        /* =========================
+           MUSIC
+        ========================= */
 
-        .music-wrap {
+        .music {
             max-width: 900px;
         }
 
-        .spotify-box {
-            background: #101010;
-            border: 1px solid rgba(255,255,255,.07);
-            padding: 8px;
+        .spotify {
+            padding: 5px;
+            background: #111;
+            border: 1px solid #1d1d1d;
+            margin-bottom: 25px;
         }
 
-        .spotify-box iframe {
+        .spotify iframe {
+            display: block;
             width: 100%;
             border: 0;
-            display: block;
             border-radius: 5px;
         }
 
-        /* ---------------- ROSTER ---------------- */
+        /* =========================
+           ARTISTS
+        ========================= */
 
-        .roster {
-            border-top: 1px solid rgba(255,255,255,.08);
+        .artist-list {
+            border-top: 1px solid #1b1b1b;
         }
 
-        .artist-row {
+        .artist {
             display: grid;
-            grid-template-columns: 70px 1fr auto;
+            grid-template-columns: 55px 1fr auto;
+
             align-items: center;
-            padding: 25px 0;
-            border-bottom: 1px solid rgba(255,255,255,.08);
-            transition: padding .2s ease, background .2s ease;
+
+            min-height: 88px;
+
+            border-bottom: 1px solid #1b1b1b;
+
+            transition:
+                padding 0.2s ease,
+                background 0.2s ease;
         }
 
-        .artist-row:hover {
+        .artist:hover {
             padding-left: 12px;
             padding-right: 12px;
-            background: rgba(255,255,255,.025);
+            background: #0f0f0f;
         }
 
         .artist-number {
@@ -263,9 +338,9 @@
         }
 
         .artist-name {
-            font-size: clamp(21px, 3vw, 34px);
-            letter-spacing: -1.2px;
-            font-weight: 700;
+            font-size: 25px;
+            font-weight: 600;
+            letter-spacing: -0.8px;
         }
 
         .artist-name span {
@@ -273,197 +348,224 @@
             font-weight: 400;
         }
 
-        .artist-tag {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #555;
-        }
-
-        /* ---------------- RELEASES ---------------- */
-
-        .releases {
+        .artist-right {
             display: flex;
-            flex-direction: column;
-            gap: 18px;
+            align-items: center;
+            gap: 20px;
         }
+
+        .artist-type {
+            color: #555;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .small-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 9px 12px;
+
+            border: 1px solid #292929;
+            border-radius: 3px;
+
+            color: #aaa;
+            font-size: 10px;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .small-button:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        /* =========================
+           QUADRUPLE THREAT
+        ========================= */
+
+        .quad-title {
+            font-size: clamp(50px, 8vw, 105px);
+            line-height: 0.9;
+            letter-spacing: -6px;
+            font-weight: 800;
+            margin-bottom: 60px;
+        }
+
+        .quad-title span {
+            color: #454545;
+        }
+
+        .quad-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .quad-description {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 430px;
+        }
+
+        .quad-members {
+            border-top: 1px solid #1c1c1c;
+        }
+
+        .quad-member {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 14px 0;
+
+            border-bottom: 1px solid #1c1c1c;
+
+            font-size: 13px;
+        }
+
+        .quad-member span {
+            color: #444;
+        }
+
+        /* =========================
+           RELEASES
+        ========================= */
 
         .release {
             display: grid;
-            grid-template-columns: 55px 1fr;
-            gap: 20px;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255,255,255,.07);
+            grid-template-columns: 50px 1fr;
+
+            gap: 25px;
+
+            padding: 30px 0;
+
+            border-bottom: 1px solid #1b1b1b;
         }
 
         .release-number {
             color: #444;
-            font-size: 12px;
+            font-size: 11px;
             padding-top: 4px;
         }
 
-        .release-info {
+        .release-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
             margin-bottom: 15px;
         }
 
-        .release-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 5px;
+        .release-name {
+            font-size: 19px;
+            font-weight: 600;
         }
 
-        .release-sub {
-            color: #666;
-            font-size: 11px;
+        .release-label {
+            color: #555;
+            font-size: 10px;
         }
 
         .release iframe {
             width: 100%;
             height: 152px;
+
             border: 0;
-            border-radius: 6px;
+            border-radius: 5px;
+
+            margin-bottom: 15px;
         }
 
-        /* ---------------- QUADRUPLE THREAT ---------------- */
-
-        .qt {
-            position: relative;
-        }
-
-        .qt-title {
-            font-size: clamp(55px, 9vw, 120px);
-            line-height: .85;
-            letter-spacing: -6px;
-            font-weight: 900;
-            max-width: 900px;
-            margin-bottom: 55px;
-        }
-
-        .qt-title span {
-            color: #444;
-        }
-
-        .qt-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .qt-info p {
-            color: #777;
-            font-size: 13px;
-            line-height: 1.8;
-            max-width: 430px;
-        }
-
-        .qt-list {
-            border-top: 1px solid rgba(255,255,255,.08);
-        }
-
-        .qt-list div {
-            padding: 13px 0;
-            border-bottom: 1px solid rgba(255,255,255,.08);
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-        }
-
-        .qt-list span {
-            color: #555;
-        }
-
-        /* ---------------- CONTACT ---------------- */
+        /* =========================
+           CONTACT
+        ========================= */
 
         .contact {
-            min-height: 65vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            padding-bottom: 150px;
         }
 
         .contact-title {
-            font-size: clamp(45px, 8vw, 105px);
-            line-height: .88;
-            letter-spacing: -5px;
-            font-weight: 900;
-            max-width: 850px;
+            font-size: clamp(48px, 8vw, 105px);
+            line-height: 0.9;
+            letter-spacing: -6px;
+            font-weight: 800;
+
+            margin-bottom: 65px;
         }
 
         .contact-title span {
-            color: #555;
+            color: #444;
         }
 
         .contact-bottom {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            gap: 30px;
-            margin-top: 80px;
-        }
 
-        .email {
-            font-size: 15px;
-            color: #ccc;
-            border-bottom: 1px solid #555;
-            padding-bottom: 7px;
-        }
-
-        .email:hover {
-            border-color: #fff;
+            gap: 50px;
         }
 
         .contact-note {
-            color: #555;
-            font-size: 11px;
-            line-height: 1.6;
+            color: #666;
+            font-size: 12px;
             max-width: 260px;
+            line-height: 1.7;
         }
 
-        /* ---------------- FOOTER ---------------- */
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            border-top: 1px solid rgba(255,255,255,.06);
-            padding: 25px 7%;
+            padding: 25px 0;
+        }
+
+        .footer-inner {
+            width: min(1180px, 90%);
+            margin: auto;
+
             display: flex;
             justify-content: space-between;
+
             color: #444;
             font-size: 10px;
-            letter-spacing: .5px;
         }
 
-        /* ---------------- ANIMATION ---------------- */
-
-        .fade {
-            opacity: 0;
-            transform: translateY(18px);
-            transition: opacity .7s ease, transform .7s ease;
-        }
-
-        .fade.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ---------------- MOBILE ---------------- */
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 700px) {
 
-            nav {
+            header {
                 padding: 0 5%;
             }
 
-            .nav-links {
-                gap: 14px;
+            nav {
+                gap: 13px;
+            }
+
+            nav a {
                 font-size: 10px;
             }
 
-            .nav-links li:nth-child(3),
-            .nav-links li:nth-child(4) {
+            nav a:nth-child(3),
+            nav a:nth-child(4) {
                 display: none;
             }
 
+            section {
+                padding: 85px 0;
+            }
+
             .hero {
-                padding: 130px 6% 70px;
                 min-height: 90vh;
             }
 
@@ -474,58 +576,70 @@
 
             .hero-bottom {
                 display: block;
+                margin-top: 35px;
             }
 
-            .hero-description {
+            .hero-text {
                 margin-bottom: 25px;
             }
 
-            section {
-                padding: 80px 6%;
-            }
-
-            .section-head {
-                margin-bottom: 35px;
-            }
-
-            .section-title {
-                font-size: 25px;
-            }
-
-            .section-note {
-                display: none;
-            }
-
             .about-grid,
-            .qt-info {
+            .quad-grid {
                 grid-template-columns: 1fr;
-                gap: 35px;
+                gap: 40px;
             }
 
-            .about-main {
+            .about-large {
                 font-size: 28px;
             }
 
-            .artist-row {
-                grid-template-columns: 35px 1fr;
+            .section-top {
+                margin-bottom: 30px;
             }
 
-            .artist-tag {
+            .artist {
+                grid-template-columns: 35px 1fr auto;
+                min-height: 78px;
+            }
+
+            .artist-name {
+                font-size: 19px;
+            }
+
+            .artist-right {
+                gap: 8px;
+            }
+
+            .artist-type {
                 display: none;
             }
 
-            .qt-title {
-                font-size: 58px;
+            .small-button {
+                padding: 8px 9px;
+            }
+
+            .quad-title {
+                font-size: 57px;
                 letter-spacing: -4px;
             }
 
             .release {
-                grid-template-columns: 35px 1fr;
-                gap: 10px;
+                grid-template-columns: 30px 1fr;
+                gap: 12px;
             }
 
-            .release iframe {
-                height: 152px;
+            .release-heading {
+                display: block;
+            }
+
+            .release-label {
+                display: block;
+                margin-top: 4px;
+            }
+
+            .contact-title {
+                font-size: 55px;
+                letter-spacing: -4px;
             }
 
             .contact-bottom {
@@ -536,8 +650,12 @@
                 margin-top: 25px;
             }
 
+            .button {
+                min-width: 155px;
+            }
+
             footer {
-                padding: 22px 6%;
+                padding: 22px 0;
             }
         }
     </style>
@@ -545,102 +663,108 @@
 
 <body>
 
-    <!-- NAV -->
+<header>
+
+    <a href="#home" class="logo">
+        LowBudget<span>Prods</span>
+    </a>
 
     <nav>
-        <a href="#top" class="logo">
-            LowBudget<span>Prods</span>
-        </a>
-
-        <ul class="nav-links">
-            <li><a href="#music">music</a></li>
-            <li><a href="#artists">artists</a></li>
-            <li><a href="#quadruple-threat">quad threat</a></li>
-            <li><a href="#releases">releases</a></li>
-            <li><a href="#contact">contact</a></li>
-        </ul>
+        <a href="#music">music</a>
+        <a href="#artists">artists</a>
+        <a href="#quad">quad threat</a>
+        <a href="#releases">releases</a>
+        <a href="#contact">contact</a>
     </nav>
 
+</header>
+
+
+<main>
 
     <!-- HERO -->
 
-    <main id="top">
+    <section class="hero" id="home">
 
-        <section class="hero">
+        <div class="hero-inner">
 
-            <div class="hero-content fade">
+            <div class="eyebrow">
+                LowBudgetProds / Quadruple Threat
+            </div>
 
-                <div class="small-label">
-                    LowBudgetProds / Quadruple Threat
-                </div>
+            <h1>
+                LOWBUDGET<br>
+                <span class="muted">PRODS.</span>
+            </h1>
 
-                <h1>
-                    LOWBUDGET<br>
-                    <span>PRODS.</span>
-                </h1>
+            <div class="hero-bottom">
 
-                <div class="hero-bottom">
+                <p class="hero-text">
+                    Music from a small group doing our own thing.
+                    Different sounds, same crew.
+                </p>
 
-                    <p class="hero-description">
-                        just a group making music.
-                        no big label shit. no fake industry stuff.
-                        just us putting stuff out.
-                    </p>
-
-                    <a href="#music" class="hero-link">
-                        listen ↓
-                    </a>
-
-                </div>
+                <a href="#music" class="button">
+                    <span>Listen to music</span>
+                    <span class="button-arrow">→</span>
+                </a>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- ABOUT -->
+    <!-- ABOUT -->
 
-        <section id="about">
+    <section>
 
-            <div class="section-head fade">
-                <div class="section-title">what we're on</div>
-                <div class="section-note">01 / 05</div>
+        <div class="container">
+
+            <div class="section-top">
+                <h2 class="section-title">about</h2>
+                <span class="section-count">01</span>
             </div>
 
             <div class="about-grid">
 
-                <div class="about-main fade">
-                    LowBudgetProds is a small music label / group
+                <div class="about-large">
+                    LowBudgetProds is a music label and collective
                     built around <span>Quadruple Threat.</span>
                 </div>
 
-                <div class="about-side fade">
-                    We make stuff, record stuff, drop stuff and
-                    figure the rest out as we go.
+                <div class="about-small">
+                    We're just making music, putting songs out
+                    and working on whatever comes next.
 
                     <br><br>
 
-                    No huge team behind it. Just artists,
-                    beats and whatever we're working on next.
+                    No giant team. No complicated shit.
+                    Just artists and music.
                 </div>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- MUSIC -->
+    <!-- MUSIC -->
 
-        <section id="music">
+    <section id="music">
 
-            <div class="section-head fade">
-                <div class="section-title">music</div>
-                <div class="section-note">02 / 05</div>
+        <div class="container">
+
+            <div class="section-top">
+                <h2 class="section-title">music</h2>
+                <span class="section-count">02</span>
             </div>
 
-            <div class="music-wrap fade">
+            <div class="music">
 
-                <div class="spotify-box">
+                <div class="spotify">
 
                     <iframe
                         src="https://open.spotify.com/embed/playlist/08QVasVOmMJH9atiisOQQu?utm_source=generator"
@@ -651,120 +775,216 @@
 
                 </div>
 
+                <a
+                    href="https://open.spotify.com/playlist/08QVasVOmMJH9atiisOQQu"
+                    target="_blank"
+                    class="button dark">
+
+                    <span>Open Spotify</span>
+                    <span class="button-arrow">↗</span>
+
+                </a>
+
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- ARTISTS -->
+    <!-- ARTISTS -->
 
-        <section id="artists">
+    <section id="artists">
 
-            <div class="section-head fade">
-                <div class="section-title">artists</div>
-                <div class="section-note">03 / 05</div>
+        <div class="container">
+
+            <div class="section-top">
+
+                <h2 class="section-title">
+                    artists
+                </h2>
+
+                <span class="section-count">
+                    03
+                </span>
+
             </div>
 
-            <div class="roster">
 
-                <a href="#quadruple-threat" class="artist-row fade">
-                    <div class="artist-number">01</div>
+            <div class="artist-list">
+
+                <div class="artist">
+
+                    <span class="artist-number">
+                        01
+                    </span>
 
                     <div class="artist-name">
                         Luh Coop <span>/ Hollow</span>
                     </div>
 
-                    <div class="artist-tag">
-                        Quad Threat
-                    </div>
-                </a>
+                    <div class="artist-right">
 
-                <a href="#quadruple-threat" class="artist-row fade">
-                    <div class="artist-number">02</div>
+                        <span class="artist-type">
+                            Quad Threat
+                        </span>
+
+                        <a href="#quad" class="small-button">
+                            View →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="artist">
+
+                    <span class="artist-number">
+                        02
+                    </span>
 
                     <div class="artist-name">
                         RKelly
                     </div>
 
-                    <div class="artist-tag">
-                        Quad Threat
-                    </div>
-                </a>
+                    <div class="artist-right">
 
-                <a href="#quadruple-threat" class="artist-row fade">
-                    <div class="artist-number">03</div>
+                        <span class="artist-type">
+                            Quad Threat
+                        </span>
+
+                        <a href="#quad" class="small-button">
+                            View →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="artist">
+
+                    <span class="artist-number">
+                        03
+                    </span>
 
                     <div class="artist-name">
                         MR Sandal
                     </div>
 
-                    <div class="artist-tag">
-                        Quad Threat
-                    </div>
-                </a>
+                    <div class="artist-right">
 
-                <a href="#quadruple-threat" class="artist-row fade">
-                    <div class="artist-number">04</div>
+                        <span class="artist-type">
+                            Quad Threat
+                        </span>
+
+                        <a href="#quad" class="small-button">
+                            View →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="artist">
+
+                    <span class="artist-number">
+                        04
+                    </span>
 
                     <div class="artist-name">
                         Lil Jim Bob
                     </div>
 
-                    <div class="artist-tag">
-                        Quad Threat
+                    <div class="artist-right">
+
+                        <span class="artist-type">
+                            Quad Threat
+                        </span>
+
+                        <a href="#quad" class="small-button">
+                            View →
+                        </a>
+
                     </div>
-                </a>
+
+                </div>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- QUADRUPLE THREAT -->
+    <!-- QUADRUPLE THREAT -->
 
-        <section id="quadruple-threat" class="qt">
+    <section id="quad">
 
-            <div class="section-head fade">
-                <div class="section-title">the group</div>
-                <div class="section-note">04 / 05</div>
+        <div class="container">
+
+            <div class="section-top">
+
+                <h2 class="section-title">
+                    the crew
+                </h2>
+
+                <span class="section-count">
+                    04
+                </span>
+
             </div>
 
-            <div class="qt-title fade">
+
+            <div class="quad-title">
                 QUADRUPLE<br>
                 <span>THREAT.</span>
             </div>
 
-            <div class="qt-info">
 
-                <p class="fade">
-                    Four people. Different sounds.
-                    Same group.
+            <div class="quad-grid">
 
-                    <br><br>
+                <div>
 
-                    Quadruple Threat is the crew behind
-                    a lot of what comes out through
-                    LowBudgetProds.
-                </p>
+                    <p class="quad-description">
+                        Four artists making their own stuff
+                        and putting it together under one name.
 
-                <div class="qt-list fade">
+                        <br><br>
 
-                    <div>
+                        That's Quadruple Threat.
+                    </p>
+
+                    <br>
+
+                    <a href="#artists" class="button dark">
+                        <span>View the artists</span>
+                        <span class="button-arrow">→</span>
+                    </a>
+
+                </div>
+
+
+                <div class="quad-members">
+
+                    <div class="quad-member">
                         <span>01</span>
                         Luh Coop / Hollow
                     </div>
 
-                    <div>
+                    <div class="quad-member">
                         <span>02</span>
                         RKelly
                     </div>
 
-                    <div>
+                    <div class="quad-member">
                         <span>03</span>
                         MR Sandal
                     </div>
 
-                    <div>
+                    <div class="quad-member">
                         <span>04</span>
                         Lil Jim Bob
                     </div>
@@ -773,186 +993,233 @@
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- RELEASES -->
+    <!-- RELEASES -->
 
-        <section id="releases">
+    <section id="releases">
 
-            <div class="section-head fade">
-                <div class="section-title">releases</div>
-                <div class="section-note">05 / 05</div>
+        <div class="container">
+
+            <div class="section-top">
+
+                <h2 class="section-title">
+                    releases
+                </h2>
+
+                <span class="section-count">
+                    05
+                </span>
+
             </div>
 
-            <div class="releases">
 
-                <div class="release fade">
+            <!-- RELEASE 01 -->
 
-                    <div class="release-number">
-                        01
-                    </div>
+            <div class="release">
 
-                    <div>
-
-                        <div class="release-info">
-                            <div class="release-title">
-                                release one
-                            </div>
-
-                            <div class="release-sub">
-                                LowBudgetProds
-                            </div>
-                        </div>
-
-                        <iframe
-                            src="https://open.spotify.com/embed/track/1NQqxDZWFg0a02hNNzeFTG?utm_source=generator"
-                            height="152"
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                            loading="lazy">
-                        </iframe>
-
-                    </div>
-
+                <div class="release-number">
+                    01
                 </div>
 
+                <div>
 
-                <div class="release fade">
+                    <div class="release-heading">
 
-                    <div class="release-number">
-                        02
-                    </div>
-
-                    <div>
-
-                        <div class="release-info">
-                            <div class="release-title">
-                                release two
-                            </div>
-
-                            <div class="release-sub">
-                                LowBudgetProds
-                            </div>
+                        <div class="release-name">
+                            Release One
                         </div>
 
-                        <iframe
-                            src="https://open.spotify.com/embed/track/5YtFkjnWzpRzqZDe3ECXVN?utm_source=generator"
-                            height="152"
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                            loading="lazy">
-                        </iframe>
-
-                    </div>
-
-                </div>
-
-
-                <div class="release fade">
-
-                    <div class="release-number">
-                        03
-                    </div>
-
-                    <div>
-
-                        <div class="release-info">
-                            <div class="release-title">
-                                release three
-                            </div>
-
-                            <div class="release-sub">
-                                LowBudgetProds
-                            </div>
+                        <div class="release-label">
+                            LowBudgetProds
                         </div>
 
-                        <iframe
-                            src="https://open.spotify.com/embed/track/5cedmuAQ91Q1yDnohQtYqs?utm_source=generator"
-                            height="152"
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                            loading="lazy">
-                        </iframe>
-
                     </div>
+
+
+                    <iframe
+                        src="https://open.spotify.com/embed/track/1NQqxDZWFg0a02hNNzeFTG?utm_source=generator"
+                        height="152"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+
+
+                    <a
+                        href="https://open.spotify.com/track/1NQqxDZWFg0a02hNNzeFTG"
+                        target="_blank"
+                        class="button dark">
+
+                        <span>Listen on Spotify</span>
+                        <span class="button-arrow">↗</span>
+
+                    </a>
 
                 </div>
 
             </div>
 
-        </section>
 
+            <!-- RELEASE 02 -->
 
-        <!-- CONTACT -->
+            <div class="release">
 
-        <section id="contact" class="contact">
-
-            <div class="fade">
-
-                <div class="small-label">
-                    contact
+                <div class="release-number">
+                    02
                 </div>
 
-                <div class="contact-title">
-                    GOT SOMETHING<br>
-                    <span>TO SAY?</span>
+                <div>
+
+                    <div class="release-heading">
+
+                        <div class="release-name">
+                            Release Two
+                        </div>
+
+                        <div class="release-label">
+                            LowBudgetProds
+                        </div>
+
+                    </div>
+
+
+                    <iframe
+                        src="https://open.spotify.com/embed/track/5YtFkjnWzpRzqZDe3ECXVN?utm_source=generator"
+                        height="152"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+
+
+                    <a
+                        href="https://open.spotify.com/track/5YtFkjnWzpRzqZDe3ECXVN"
+                        target="_blank"
+                        class="button dark">
+
+                        <span>Listen on Spotify</span>
+                        <span class="button-arrow">↗</span>
+
+                    </a>
+
                 </div>
 
             </div>
 
-            <div class="contact-bottom fade">
+
+            <!-- RELEASE 03 -->
+
+            <div class="release">
+
+                <div class="release-number">
+                    03
+                </div>
+
+                <div>
+
+                    <div class="release-heading">
+
+                        <div class="release-name">
+                            Release Three
+                        </div>
+
+                        <div class="release-label">
+                            LowBudgetProds
+                        </div>
+
+                    </div>
+
+
+                    <iframe
+                        src="https://open.spotify.com/embed/track/5cedmuAQ91Q1yDnohQtYqs?utm_source=generator"
+                        height="152"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+
+
+                    <a
+                        href="https://open.spotify.com/track/5cedmuAQ91Q1yDnohQtYqs"
+                        target="_blank"
+                        class="button dark">
+
+                        <span>Listen on Spotify</span>
+                        <span class="button-arrow">↗</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                contact
+            </div>
+
+
+            <div class="contact-title">
+                GOT A<br>
+                <span>QUESTION?</span>
+            </div>
+
+
+            <div class="contact-bottom">
 
                 <a
-                    class="email"
-                    href="mailto:cooperbednarz757@gmail.com">
-                    cooperbednarz757@gmail.com
+                    href="mailto:cooperbednarz757@gmail.com"
+                    class="button">
+
+                    <span>Email us</span>
+                    <span class="button-arrow">→</span>
+
                 </a>
 
-                <div class="contact-note">
-                    demos, collabs, questions, whatever.
-                    send it over.
-                </div>
+
+                <p class="contact-note">
+                    Send over demos, collabs, questions,
+                    or anything else you wanna talk about.
+                </p>
 
             </div>
 
-        </section>
+        </div>
 
-    </main>
+    </section>
+
+</main>
 
 
-    <!-- FOOTER -->
+<!-- FOOTER -->
 
-    <footer>
-        <div>
+<footer>
+
+    <div class="footer-inner">
+
+        <span>
             © 2026 LowBudgetProds
-        </div>
+        </span>
 
-        <div>
+        <span>
             Quadruple Threat
-        </div>
-    </footer>
+        </span>
 
+    </div>
 
-    <!-- SIMPLE SCROLL ANIMATION -->
-
-    <script>
-        const fadeElements = document.querySelectorAll(".fade");
-
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                    }
-                });
-            },
-            {
-                threshold: 0.12
-            }
-        );
-
-        fadeElements.forEach(element => {
-            observer.observe(element);
-        });
-    </script>
+</footer>
 
 </body>
 </html>
+```
